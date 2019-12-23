@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A3DE5A1A23B0967A00CF9D3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE5A1923B0967A00CF9D3D /* AppDelegate.m */; };
 		A3DE5A1D23B0967A00CF9D3D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE5A1C23B0967A00CF9D3D /* SceneDelegate.m */; };
-		A3DE5A2023B0967A00CF9D3D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE5A1F23B0967A00CF9D3D /* ViewController.m */; };
 		A3DE5A2323B0967A00CF9D3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3DE5A2123B0967A00CF9D3D /* Main.storyboard */; };
 		A3DE5A2523B0968000CF9D3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3DE5A2423B0968000CF9D3D /* Assets.xcassets */; };
 		A3DE5A2823B0968000CF9D3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3DE5A2623B0968000CF9D3D /* LaunchScreen.storyboard */; };
@@ -22,8 +21,6 @@
 		A3DE5A1923B0967A00CF9D3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A3DE5A1B23B0967A00CF9D3D /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		A3DE5A1C23B0967A00CF9D3D /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		A3DE5A1E23B0967A00CF9D3D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A3DE5A1F23B0967A00CF9D3D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A3DE5A2223B0967A00CF9D3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A3DE5A2423B0968000CF9D3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3DE5A2723B0968000CF9D3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,19 +58,57 @@
 		A3DE5A1723B0967A00CF9D3D /* Pokemon Objc */ = {
 			isa = PBXGroup;
 			children = (
+				A3DE5A3223B0970000CF9D3D /* Model */,
+				A3DE5A3123B096FB00CF9D3D /* Model Controller */,
+				A3DE5A3523B0975200CF9D3D /* View Controllers */,
+				A3DE5A3423B0970600CF9D3D /* Resources */,
+				A3DE5A3323B0970300CF9D3D /* Storyboards */,
+			);
+			path = "Pokemon Objc";
+			sourceTree = "<group>";
+		};
+		A3DE5A3123B096FB00CF9D3D /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Model Controller";
+			sourceTree = "<group>";
+		};
+		A3DE5A3223B0970000CF9D3D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A3DE5A3323B0970300CF9D3D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A3DE5A2123B0967A00CF9D3D /* Main.storyboard */,
+				A3DE5A2623B0968000CF9D3D /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		A3DE5A3423B0970600CF9D3D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				A3DE5A1823B0967A00CF9D3D /* AppDelegate.h */,
 				A3DE5A1923B0967A00CF9D3D /* AppDelegate.m */,
 				A3DE5A1B23B0967A00CF9D3D /* SceneDelegate.h */,
 				A3DE5A1C23B0967A00CF9D3D /* SceneDelegate.m */,
-				A3DE5A1E23B0967A00CF9D3D /* ViewController.h */,
-				A3DE5A1F23B0967A00CF9D3D /* ViewController.m */,
-				A3DE5A2123B0967A00CF9D3D /* Main.storyboard */,
-				A3DE5A2423B0968000CF9D3D /* Assets.xcassets */,
-				A3DE5A2623B0968000CF9D3D /* LaunchScreen.storyboard */,
-				A3DE5A2923B0968000CF9D3D /* Info.plist */,
 				A3DE5A2A23B0968000CF9D3D /* main.m */,
+				A3DE5A2423B0968000CF9D3D /* Assets.xcassets */,
+				A3DE5A2923B0968000CF9D3D /* Info.plist */,
 			);
-			path = "Pokemon Objc";
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A3DE5A3523B0975200CF9D3D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +181,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3DE5A2023B0967A00CF9D3D /* ViewController.m in Sources */,
 				A3DE5A1A23B0967A00CF9D3D /* AppDelegate.m in Sources */,
 				A3DE5A2B23B0968000CF9D3D /* main.m in Sources */,
 				A3DE5A1D23B0967A00CF9D3D /* SceneDelegate.m in Sources */,
