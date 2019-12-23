@@ -13,6 +13,10 @@
 		A3DE5A2523B0968000CF9D3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3DE5A2423B0968000CF9D3D /* Assets.xcassets */; };
 		A3DE5A2823B0968000CF9D3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3DE5A2623B0968000CF9D3D /* LaunchScreen.storyboard */; };
 		A3DE5A2B23B0968000CF9D3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE5A2A23B0968000CF9D3D /* main.m */; };
+		A3DE5A3823B09C1E00CF9D3D /* SBOPokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE5A3723B09C1E00CF9D3D /* SBOPokemon.m */; };
+		A3DE5A3B23B09C3C00CF9D3D /* PokemonListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE5A3A23B09C3C00CF9D3D /* PokemonListTableViewController.m */; };
+		A3DE5A3E23B09C4C00CF9D3D /* PokemonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE5A3D23B09C4C00CF9D3D /* PokemonDetailViewController.m */; };
+		A3DE5A4123B09C6800CF9D3D /* PokemonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DE5A4023B09C6800CF9D3D /* PokemonController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,14 @@
 		A3DE5A2723B0968000CF9D3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3DE5A2923B0968000CF9D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3DE5A2A23B0968000CF9D3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A3DE5A3623B09C1E00CF9D3D /* SBOPokemon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBOPokemon.h; sourceTree = "<group>"; };
+		A3DE5A3723B09C1E00CF9D3D /* SBOPokemon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBOPokemon.m; sourceTree = "<group>"; };
+		A3DE5A3923B09C3C00CF9D3D /* PokemonListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PokemonListTableViewController.h; sourceTree = "<group>"; };
+		A3DE5A3A23B09C3C00CF9D3D /* PokemonListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PokemonListTableViewController.m; sourceTree = "<group>"; };
+		A3DE5A3C23B09C4C00CF9D3D /* PokemonDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PokemonDetailViewController.h; sourceTree = "<group>"; };
+		A3DE5A3D23B09C4C00CF9D3D /* PokemonDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PokemonDetailViewController.m; sourceTree = "<group>"; };
+		A3DE5A3F23B09C6800CF9D3D /* Pokemon Objc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pokemon Objc-Bridging-Header.h"; sourceTree = "<group>"; };
+		A3DE5A4023B09C6800CF9D3D /* PokemonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +82,8 @@
 		A3DE5A3123B096FB00CF9D3D /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A3DE5A4023B09C6800CF9D3D /* PokemonController.swift */,
+				A3DE5A3F23B09C6800CF9D3D /* Pokemon Objc-Bridging-Header.h */,
 			);
 			name = "Model Controller";
 			sourceTree = "<group>";
@@ -77,6 +91,8 @@
 		A3DE5A3223B0970000CF9D3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A3DE5A3623B09C1E00CF9D3D /* SBOPokemon.h */,
+				A3DE5A3723B09C1E00CF9D3D /* SBOPokemon.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -107,6 +123,10 @@
 		A3DE5A3523B0975200CF9D3D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A3DE5A3923B09C3C00CF9D3D /* PokemonListTableViewController.h */,
+				A3DE5A3A23B09C3C00CF9D3D /* PokemonListTableViewController.m */,
+				A3DE5A3C23B09C4C00CF9D3D /* PokemonDetailViewController.h */,
+				A3DE5A3D23B09C4C00CF9D3D /* PokemonDetailViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -142,6 +162,7 @@
 				TargetAttributes = {
 					A3DE5A1423B0967A00CF9D3D = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -181,9 +202,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3DE5A3B23B09C3C00CF9D3D /* PokemonListTableViewController.m in Sources */,
+				A3DE5A4123B09C6800CF9D3D /* PokemonController.swift in Sources */,
+				A3DE5A3823B09C1E00CF9D3D /* SBOPokemon.m in Sources */,
 				A3DE5A1A23B0967A00CF9D3D /* AppDelegate.m in Sources */,
 				A3DE5A2B23B0968000CF9D3D /* main.m in Sources */,
 				A3DE5A1D23B0967A00CF9D3D /* SceneDelegate.m in Sources */,
+				A3DE5A3E23B09C4C00CF9D3D /* PokemonDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +348,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Pokemon Objc/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -331,6 +357,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "demo.Pokemon-Objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pokemon Objc/Pokemon Objc-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -339,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Pokemon Objc/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -347,6 +377,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "demo.Pokemon-Objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pokemon Objc/Pokemon Objc-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
