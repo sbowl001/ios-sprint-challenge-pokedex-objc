@@ -9,6 +9,10 @@
 #import "PokemonDetailViewController.h"
 
 @interface PokemonDetailViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *pokemonSprite;
+@property (weak, nonatomic) IBOutlet UILabel *pokemonName;
+@property (weak, nonatomic) IBOutlet UILabel *pokemonID;
+@property (weak, nonatomic) IBOutlet UILabel *abilitiesLabel;
 
 @end
 
