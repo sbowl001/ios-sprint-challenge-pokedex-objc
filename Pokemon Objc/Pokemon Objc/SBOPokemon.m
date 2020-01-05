@@ -7,6 +7,7 @@
 //
 
 #import "SBOPokemon.h"
+#import <UIKit/UIKit.h> 
 
 @implementation SBOPokemon
 
