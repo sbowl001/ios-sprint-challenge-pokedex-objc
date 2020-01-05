@@ -8,18 +8,32 @@
 
 import UIKit
 
-@objc (PokemonController)
+@objc(PokemonController)
+
 class PokemonController: NSObject {
     
-    let baseURL = URL(string:"")!
     
-    @objc var pokemons: [SBOPokemon] = []
+//    var pokemons = [Pokemon]()
+    
+    let baseURL = URL(string:"https://pokeapi.co/api/v2/pokemon/")!
+    
+//    @objc var pokemons: [SBOPokemon]()
     
     @objc static let shared = PokemonController()
     
     
-    @objc func getPokemon(completion: @escaping ([SBOPokemon?], Error?) -> Void) {
-        let requestURL = baseURL
+    @objc func getPokemon(completion: @escaping ([Pokemon]?, Error?) -> Void) {
+       var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
+        
+        urlComponents?.queryItems = [
+            URLQueryItem(name: "offset", value: "0"),
+            URLQueryItem(name: "limit", value: "250")]
+        
+        guard let requestURL = urlComponents?.url else { fatalError("Pokemon url could not be constructed")}
+             var request = URLRequest(url: requestURL)
+             request.httpMethod = "GET"
+        
+        
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             if let error = error {
                 NSLog("error getting Pokemon \(error)")
@@ -34,12 +48,13 @@ class PokemonController: NSObject {
                 }
             do {
             guard let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {return}
-            let pokemonDictionaries = dictionary["results"] as! [[String: Any]]
-            for pokemonDictionary in pokemonDictionaries {
-                let pokemons = SBOPokemon(dictionary: pokemonDictionary)
-                self.pokemons.append(pokemon)
-            }
-            completion(self.pokemons, nil)
+                
+                
+            let results = dictionary["results"] as! [[String: Any]]
+                //what is this using?
+             let pokemon = results.compactMap { Pokemon(dictionary: $0) }
+      //looking this up as forloop didn't work. Explanation?
+            completion(pokemon, nil)
         }
             catch {
                     NSLog("Error decoding random users JSON \(error)")
@@ -49,12 +64,20 @@ class PokemonController: NSObject {
             }.resume()
 
     }
- @objc func fillInPerson(person: SBOPokemon) {
-    let randomIndex = Int(arc4random_uniform(999));
-    let requestURL = baseURL
+ @objc func fillInPerson(for pokemon: Pokemon) {
+ 
+    
+    
+    var urlComponents = URLComponents(url: baseURL.appendingPathComponent(pokemon.pokemonName!), resolvingAgainstBaseURL: true)
+    
+    guard let requestURL = urlComponents?.url else { return }
+    var request = URLRequest(url: requestURL)
+    request.httpMethod = "GET"
+    //do I actually need the "GET"? Moin's randomUser solution didn't and still worked
+    
     URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
         if let error = error {
-            NSLog("Error getting Users \(error)")
+            NSLog("Error fetching data \(error)")
             return
         }
         guard let data = data else {
@@ -63,19 +86,32 @@ class PokemonController: NSObject {
         }
          do {
                 guard let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {return}
-                let pokemonDictionaries = dictionary["name"] as! [[String: Any]]
-                let pokemonDictionary = pokemonDictionaries[randomIndex]
-                let identifier = pokemonDictionary["identifier"] as! Identifier
-                let abilities = pokemonDictionary["abilities"]["ability"]["name"] as! String
-                let pictureObject = pokemonDictionary["sprites"] as! [String: Any]
-                let largeImageString = pictureObject["front_default"] as! String
-                pokemon.identifier = identifier
-              pokemon.abilities = abilities
-                let largeImageData = try! Data(contentsOf: URL(string: largeImageString)!)
+             
+              
+                let identifier = dictionary["id"] as! Int
+                pokemon.identifier = Int32(identifier)
                 
-                let image = UIImage(data: largeImageData)!
-                pokemon.sprite = image
-                  
+                let abilities = dictionary["abilities"] as! [[String : Any]]
+            var allAbilities: [String] = []
+            for abilityDictionary in abilities {
+                let ability = abilityDictionary["ability"] as! [String: Any]
+                let abilityName = ability["name"] as! String
+                allAbilities.append(abilityName)
+            }
+            pokemon.abilities = allAbilities
+            
+            
+                let pictureObject = dictionary["sprites"] as! [String: Any]
+                let imageString = pictureObject["front_default"] as! String
+                
+                let imageData = try! Data(contentsOf: URL(string: imageString)!)
+            
+                let image = UIImage(data: imageData)!
+                 
+                pokemon.pokemonSprite = image
+                    
+                    
+ 
             } catch {
                 NSLog("error decoding random users JSON \(error)")
                     return
