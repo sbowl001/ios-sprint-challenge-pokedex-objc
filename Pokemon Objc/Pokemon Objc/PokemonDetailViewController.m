@@ -33,13 +33,13 @@ void *KVOContext = &KVOContext;
         [_pokemon removeObserver:self forKeyPath:@"name" context:KVOContext];
         [_pokemon removeObserver:self forKeyPath:@"id" context:KVOContext];
         [_pokemon removeObserver:self forKeyPath:@"abilities" context:KVOContext];
-         [_pokemon removeObserver:self forKeyPath:@"sprites" context:KVOContext];
-        pokemon = pokemon;
+         [_pokemon removeObserver:self forKeyPath:@"pokemonSprite" context:KVOContext];
+        _pokemon = pokemon;
         
         [_pokemon addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionInitial context:KVOContext];
         [_pokemon addObserver:self forKeyPath:@"id" options:NSKeyValueObservingOptionInitial context:KVOContext];
         [_pokemon addObserver:self forKeyPath:@"abilities" options:NSKeyValueObservingOptionInitial context:KVOContext];
-        [_pokemon addObserver:self forKeyPath:@"sprites" options:NSKeyValueObservingOptionInitial context:KVOContext];
+        [_pokemon addObserver:self forKeyPath:@"pokemonSprite" options:NSKeyValueObservingOptionInitial context:KVOContext];
     }
 
     
@@ -47,12 +47,12 @@ void *KVOContext = &KVOContext;
 -(void)updateViews {
     if(!self.pokemon || !self.isViewLoaded) {return;}
     
-    self.pokemonName.text = self.pokemon.pokemonName;
+    self.pokemonName.text = [self.pokemon.pokemonName capitalizedString];
     self.pokemonID.text = [NSString stringWithFormat:@"%d", self.pokemon.identifier];
     self.abilitiesLabel.text = [self.pokemon.abilities componentsJoinedByString:@", "];
-    
+//    self.pokemonSprite = self.pokemon.pokemonSprite;
     [_pokemonSprite setImage:_pokemon.pokemonSprite];
-    
+//    self.pokemonSprite.image = [[UIImage alloc] initWithData:self.pokemon.pokemonSprite];
      
 }
 
