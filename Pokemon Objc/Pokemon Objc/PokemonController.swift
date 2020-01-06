@@ -19,7 +19,7 @@ class PokemonController: NSObject {
     
 //    @objc var pokemons: [SBOPokemon]()
     
-    @objc static let shared = PokemonController()
+    @objc(sharedController) static let shared = PokemonController()
     
     
     @objc func getPokemon(completion: @escaping ([Pokemon]?, Error?) -> Void) {
