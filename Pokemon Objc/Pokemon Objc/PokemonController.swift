@@ -64,7 +64,7 @@ class PokemonController: NSObject {
             }.resume()
 
     }
- @objc func fillInPerson(for pokemon: Pokemon) {
+ @objc func fillInPokemon(pokemon: Pokemon) {
  
     
     

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-NS_ASSUME_NONNULL_BEGIN
+//NS_ASSUME_NONNULL_BEGIN
 NS_SWIFT_NAME(Pokemon)
 
 @interface SBOPokemon : NSObject
@@ -20,10 +20,10 @@ NS_SWIFT_NAME(Pokemon)
 @property (nonatomic, nullable) UIImage *pokemonSprite;
 
 
--(nonnull instancetype) initWithName: (nonnull NSString *)pokemonName identifier: (int)identifier abilities:(nullable NSString *)abilities image:(nullable UIImage *)pokemonSprite;
+-(nonnull instancetype) initWithName: (nullable NSString *)pokemonName identifier: (int)identifier abilities:(nullable NSString *)abilities image:(nullable UIImage *)pokemonSprite;
 
 -(nonnull instancetype) initWithDictionary: (nonnull NSDictionary *)dictionary;
 @end
 
-NS_ASSUME_NONNULL_END
+//NS_ASSUME_NONNULL_END
 

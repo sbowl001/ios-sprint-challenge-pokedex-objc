@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+
 NS_ASSUME_NONNULL_BEGIN
 
+@class SBOPokemon;
+
 @interface PokemonDetailViewController : UIViewController
+@property (nonatomic) SBOPokemon *pokemon;
+//@property (nonatomic) PokemonController *pokemonController;
 
 @end
 

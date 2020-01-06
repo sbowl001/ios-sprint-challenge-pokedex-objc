@@ -7,6 +7,10 @@
 //
 
 #import "PokemonDetailViewController.h"
+#import "SBOPokemon.h"
+#import "Pokemon_Objc-Swift.h"
+
+void *KVOContext = &KVOContext;
 
 @interface PokemonDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *pokemonSprite;
@@ -20,17 +24,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+   
+    [PokemonController.sharedController fillInPokemonWithPokemon:self.pokemon];
 }
 
-/*
-#pragma mark - Navigation
+- (void)setPokemon:(SBOPokemon *)pokemon {
+    if(pokemon != _pokemon) {
+        [_pokemon removeObserver:self forKeyPath:@"name" context:KVOContext];
+        [_pokemon removeObserver:self forKeyPath:@"id" context:KVOContext];
+        [_pokemon removeObserver:self forKeyPath:@"abilities" context:KVOContext];
+         [_pokemon removeObserver:self forKeyPath:@"sprites" context:KVOContext];
+        pokemon = pokemon;
+        
+        [_pokemon addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionInitial context:KVOContext];
+        [_pokemon addObserver:self forKeyPath:@"id" options:NSKeyValueObservingOptionInitial context:KVOContext];
+        [_pokemon addObserver:self forKeyPath:@"abilities" options:NSKeyValueObservingOptionInitial context:KVOContext];
+        [_pokemon addObserver:self forKeyPath:@"sprites" options:NSKeyValueObservingOptionInitial context:KVOContext];
+    }
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
+-(void)updateViews {
+    if(!self.pokemon || !self.isViewLoaded) {return;}
+    
+    self.pokemonName.text = self.pokemon.pokemonName;
+    self.pokemonID.text = [NSString stringWithFormat:@"%d", self.pokemon.identifier];
+    self.abilitiesLabel.text = [self.pokemon.abilities componentsJoinedByString:@", "];
+    
+    [_pokemonSprite setImage:_pokemon.pokemonSprite];
+    
+     
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context == KVOContext) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateViews];
+        });
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
 
 @end

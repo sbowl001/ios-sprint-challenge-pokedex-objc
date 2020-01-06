@@ -11,7 +11,7 @@
 
 @implementation SBOPokemon
 
--(nonnull instancetype) initWithName: (nonnull NSString *)pokemonName identifier: (int)identifier abilities:(nullable NSString *)abilities image:(nullable UIImage *)pokemonSprite
+-(nonnull instancetype) initWithName: (nullable NSString *)pokemonName identifier: (int)identifier abilities:(nullable NSString *)abilities image:(nullable UIImage *)pokemonSprite
 {
     self = [super init];
     if (self) {
@@ -26,7 +26,7 @@
 
 -(instancetype) initWithDictionary: (NSDictionary *)dictionary
 {
-    NSString *pokemonName = dictionary[@"name"];
+    NSString *pokemonName = [NSString stringWithFormat:@"%@", dictionary[@"name"]];
     
  
     return [self initWithName:pokemonName identifier:NULL abilities:NULL image:NULL];

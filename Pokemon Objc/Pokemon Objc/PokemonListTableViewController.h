@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Pokemon_Objc-Swift.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class SBOPokemon;
@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PokemonListTableViewController : UITableViewController
 
 
-@property (nonatomic) PokemonController *pokemonController;
+//@property (nonatomic) PokemonController *pokemonController;
 
 @property (nonatomic) NSArray<SBOPokemon *> *pokemon;
 @end

@@ -9,6 +9,7 @@
 #import "PokemonListTableViewController.h"
 #import "SBOPokemon.h"
 #import "PokemonDetailViewController.h"
+#import "Pokemon_Objc-Swift.h"
 
 @interface PokemonListTableViewController ()
 
@@ -19,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _pokemonController = [[PokemonController alloc] init];
+//    _pokemonController = [[PokemonController alloc] init];
     //why can the following be a different name?
     [PokemonController.sharedController getPokemonWithCompletion:^(NSArray<SBOPokemon *> *pokemon, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
